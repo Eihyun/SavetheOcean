@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+}
+
+button {
+    cursor: pointer;
+}
+
+body, .container, .start-page, .start-page_btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: antiquewhite;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: 45rem;
+    height: 63.75rem;
+    background-color: white;
+    flex-direction: column;
+}
+
+/* Start Page */
+.start-page {
+    flex-direction: column;
+    gap: 5.5rem;
+}
+
+.start-page_title {
+    width: 16rem;
+}
+
+.start-page_title h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.start-page_btns {
+    gap: 3rem;
+}
+
+.start-page_btns button {
+    width: 13.75rem;
+    height: 5.125rem;
+    font-size: 2rem;
+}
+
+/* How to Play - Instruction */
+.howTo-page {
+    width: 35rem;
+    height: 55rem;
+    position: absolute;
+    background-color: #f4f4f4;
+}
