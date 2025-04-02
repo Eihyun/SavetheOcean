@@ -9,21 +9,104 @@
 </head>
 <body>
     <div class="container">
+        <!-- Start Page -->
         <div class="start-page">
             <div class="start-page_title">
                 <h1>Save the Ocean</h1>
             </div>
             <div class="start-page_btns">       
-                <button class="howToBtn">How to Play</button>
-                <button class="startBtn">Start</button>
+                <button class="howToBtn" id="how-to-btn">How to Play</button>
+                <button class="startBtn" id="start-btn">
+                Start
+                </button>
             </div>
         </div>
 
-        <div class="howTo-page">
-            <button class="howTo-page_close close-btn">
+        <!-- How to Play -->
+        <div class="howTo-page" id="howTo-page">
+            <button class="howTo-page_close" id="close-btn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
+
+            <div class="howTo-page_text">
+                <p>Recycle at least 20 items by placing them in the right bins to win the game.</p>
+                <p>You have 60 seconds to complete the challenge!</p>
+            </div>
+
+            <div class="howTo-page_arrows">
+                <i class="fa-solid fa-arrow-up"></i>
+                <img src="../images/Banana.png" alt="">
+                <div>Organic: Arrow Up Key</div>
+                <i class="fa-solid fa-arrow-right"></i>
+                <img src="../images/Paper.png" alt="">
+                <div>Paper: Arrow Right Key</div>
+                <i class="fa-solid fa-arrow-down"></i>
+                <img src="../images/Can.png" alt="">
+                <div>Aluminium: Arrow Down Key</div>
+                <i class="fa-solid fa-arrow-left"></i>
+                <img src="../images/bottle.png" alt="">
+                <div>Plastic: Arrow Left Key</div>
+            </div>
+
+            <div class="howTo-page_warning">
+                <p>Lose 3 <i class="fa-solid fa-heart"></i>, you lose the game!</p>
+            </div>
         </div>
+
+        <!-- Game Page -->
+        <div class="game-page" id="game-page">
+
+            <div class="game-status">
+                <div class="score-container" id="score-container">
+                    <span class="status-title score-title">Score</span>
+                    <span class="status" id="score">0</span>
+                </div>
+                <div class="time-container" id="time-container">
+                    <span class="status-title time-title">Time</span>
+                    <span class="status" id="time"></span>
+                </div>
+                <div class="hearts-container">
+                    <img src="../images/Heart.png" class="heart" id="heart" alt="">
+                    <img src="../images/Heart.png" class="heart" id="heart" alt="">
+                    <img src="../images/Heart.png" class="heart" id="heart" alt="">
+                </div>
+            </div>
+
+            <div class="conveyor">
+            </div>
+
+            <div class="octopus-container">
+                    <img src="../images/Octopus.png" alt="">
+            </div>
+
+            <div class="bins-container">
+                <div class="bin organic-bin"></div>
+                <div class="bin paper-bin"></div>
+                <div class="bin aluminium-bin"></div>
+                <div class="bin plastic-bin"></div>
+            </div>
+        </div>
+
+        <div class="ending fail" id="fail">
+            <div class="fail-title">
+                <p>Oops! The Ocean is polluted!</p>
+                <p>Try again to save it.</p>
+            </div>
+            <i class="fa-solid fa-face-sad-tear"></i>
+            <div class="fail-retry_btn">
+                <button class="retry" id="retry-btn">Retry</button>
+            </div>
+        </div>
+
+        <!-- <div class="ending success" id="success">
+
+        </div> -->
+
+
+
     </div>
+
+    <!-- My JS -->
+    <script src="../javascript/script.js"></script>
 </body>
 </html>

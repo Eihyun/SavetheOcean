@@ -1,45 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --Organic: #25891C;
+    --Paper: #FEBE00;
+    --Aluminium: #525252;
+    --Plastic: #1D63C9;
+
+}
 
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
     font-style: normal;
+}
+
+html {
+    font-size: 12px;
+}
+
+@media screen and (min-width: 834px) and (min-height: 1100px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(188, 230, 244);
+    font-family: "Inter", sans-serif;
+    user-select: none;
 }
 
 button {
     cursor: pointer;
 }
 
-body, .container, .start-page, .start-page_btns {
+body, .container, .start-page, .start-page_btns, .howTo-page, .game-page, .status-title, .hearts-container, .ending {
     display: flex;
+}
+
+body, .container, .start-page, .start-page_btns, .ending {
     justify-content: center;
     align-items: center;
 }
 
-body {
-    background-color: antiquewhite;
-    width: 100vw;
-    height: 100vh;
-}
-
 .container {
     width: 45rem;
-    height: 63.75rem;
+    height: 63rem;
+    max-height: 90vh;
+    overflow: hidden;
     background-color: white;
     flex-direction: column;
+    position: relative;
 }
 
 /* Start Page */
 .start-page {
     flex-direction: column;
-    gap: 5.5rem;
+    gap: 10rem;
 }
 
 .start-page_title {
-    width: 16rem;
+    width: 14rem;
 }
 
 .start-page_title h1 {
@@ -55,12 +80,278 @@ body {
     width: 13.75rem;
     height: 5.125rem;
     font-size: 2rem;
+    border-radius: 10px;
+}
+
+.startBtn {
+    color: white;
+    background-color: var(--Organic);
+}
+
+.howToBtn {
+    background-color: var(--Paper);
+    color: rgb(64, 64, 64);
 }
 
 /* How to Play - Instruction */
 .howTo-page {
+    visibility: hidden;
     width: 35rem;
     height: 55rem;
     position: absolute;
     background-color: #f4f4f4;
+    flex-direction: column;
+    align-items: center;
+}
+
+.howTo-page_close {
+    width: 4rem;
+    height: 4rem;
+    margin: 2rem;
+    background-color: transparent;
+    align-self: flex-end;
+}
+
+.howTo-page_close i {
+    font-size: 4rem;
+}
+
+.howTo-page_text {
+    width: 25rem;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.howTo-page_text p {
+    margin-bottom: 2rem;
+}
+
+.howTo-page_arrows {
+    width: 30rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 1rem 0 3rem;
+}
+
+.howTo-page_arrows i {
+    grid-column: 1;
+    width: 4rem;
+    height: 4rem;
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 4rem;
+    border-radius: 9px;
+    margin: 0 auto;
+}
+
+.howTo-page_arrows img {
+    max-width: 4rem;
+    max-height: 4rem;
+    grid-column: 2;
+    margin: 0 auto;
+    align-self: center;
+}
+
+.howTo-page_arrows div {
+    grid-column: 3 / -1;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    line-height: 3.5rem;
+    font-weight: 300;
+}
+
+.howTo-page_arrows > .fa-arrow-up {
+    background-color: var(--Organic);
+}
+
+.howTo-page_arrows > .fa-arrow-right {
+    background-color: var(--Paper);
+}
+
+.howTo-page_arrows > .fa-arrow-down {
+    background-color: var(--Aluminium);
+}
+
+.howTo-page_arrows > .fa-arrow-left {
+    background-color: var(--Plastic);
+}
+
+
+.howTo-page_warning {
+    font-size: 2rem;
+}
+
+.howTo-page_warning i {
+    color: #FC5959;
+}
+
+/* Game Interface Page */
+.game-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../images/Game_bg.png);
+    visibility: hidden;
+    flex-direction: column;
+}
+
+.game-status {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+}
+
+.score-container, .time-container {
+    padding: 1rem;
+    position: absolute;
+    width: 13rem;
+    height: 6rem;
+    border: 1px solid #000;
+    background-color: #D9D9D9;
+    text-align: center;
+}
+
+.score-container {
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+.time-container {
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.status-title {
+    display: block;
+    font-size: 1.5rem;
+    gap: 1rem;
+}
+
+.status {
+    font-size: 2rem;
+}
+
+.hearts-container {
+    position: absolute;
+    gap: 1.3rem;
+    top: 8rem;
+    right: 4rem;
+}
+
+.heart {
+    width: 1.8rem;
+}
+
+.conveyor {
+    width: 9rem;
+    height: 40rem;
+    background-image: url(../images/Conveyor.png);
+    position: relative;
+    left: 40%;
+    z-index: 1;
+}
+
+.octopus-container {
+    position: relative;
+    z-index: 10;
+    left: 35%;
+    top: -5%;
+    width: 13.5rem;
+}
+
+.octopus-container img {
+    width: 100%;
+}
+
+.bins-container {
+    position: absolute;
+    width: 80%;
+    height: 60%;
+    top: 25rem;
+    left: 4.5rem;
+    display: grid;
+    grid-template-areas: 
+    ". a a ."
+    "b . . c"
+    ". d d .";
+    justify-items: center;
+}
+
+.bin {
+    position: absolute;
+    border-radius: 2.5rem;
+    background: #000;
+    height: 11.5rem;
+    z-index: 0;
+}
+
+.organic-bin, .aluminium-bin {
+    width: 18.5rem;
+}
+
+.paper-bin, .plastic-bin {
+    width: 10rem;
+}
+
+.organic-bin {
+    border: 32px solid var(--Organic);
+
+    grid-area: a;
+}
+
+.plastic-bin {
+    border: 32px solid var(--Plastic);
+
+    grid-area: b;
+}
+
+.aluminium-bin {
+    border: 32px solid var(--Aluminium);
+
+    grid-area: d;
+}
+.paper-bin {
+    border: 32px solid var(--Paper);
+
+    grid-area: c;
+
+}
+
+
+/* Ending */
+.ending {
+    width: 35rem;
+    height: 55rem;
+    position: absolute;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 10000;
+}
+
+.fail {
+    visibility: hidden;
+}
+
+.fail-title p {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.fail i {
+    font-size: 6rem;
+    margin: 4rem 0;
+}
+
+.fail-retry_btn button {
+    width: 13.75rem;
+    height: 5.125rem;
+    font-size: 2rem;
+    border-radius: 10px;
+    background-color: #FC5959;
+    color: white;
+    text-transform: uppercase;
 }
