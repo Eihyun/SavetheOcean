@@ -20,6 +20,10 @@
                 Start
                 </button>
             </div>
+
+            <div class="start-octopus">
+                <img src="../images/Octopus_front.png" alt="">
+            </div>
         </div>
 
         <!-- How to Play -->
@@ -49,36 +53,43 @@
             </div>
 
             <div class="howTo-page_warning">
-                <p>Lose 3 <i class="fa-solid fa-heart"></i>, you lose the game!</p>
+                <p>Lose 3 <img src="../images/Heart.png" class="heart" id="heart" alt="">, you lose the game!</p>
             </div>
         </div>
 
         <!-- Game Page -->
         <div class="game-page" id="game-page">
 
+            <!-- Game Status -->
             <div class="game-status">
                 <div class="score-container" id="score-container">
                     <span class="status-title score-title">Score</span>
-                    <span class="status" id="score">0</span>
+                    <span class="status" id="score"></span>
                 </div>
                 <div class="time-container" id="time-container">
                     <span class="status-title time-title">Time</span>
                     <span class="status" id="time"></span>
                 </div>
                 <div class="hearts-container">
-                    <img src="../images/Heart.png" class="heart" id="heart" alt="">
-                    <img src="../images/Heart.png" class="heart" id="heart" alt="">
-                    <img src="../images/Heart.png" class="heart" id="heart" alt="">
+                    <img src="../images/Heart.png" class="heart" id="heart1" alt="">
+                    <img src="../images/Heart.png" class="heart" id="heart2" alt="">
+                    <img src="../images/Heart.png" class="heart" id="heart3" alt="">
                 </div>
             </div>
 
+            <!-- Items on Conveyor Belt -->
             <div class="conveyor">
+                <span id="item3"></span>
+                <span id="item2"></span>
+                <span id="item1"></span>
             </div>
 
+            <!-- Octopus -->
             <div class="octopus-container">
                     <img src="../images/Octopus.png" alt="">
             </div>
 
+            <!-- Garbage bins -->
             <div class="bins-container">
                 <div class="bin organic-bin"></div>
                 <div class="bin paper-bin"></div>
@@ -87,26 +98,36 @@
             </div>
         </div>
 
+        <!-- Fail ending screen -->
         <div class="ending fail" id="fail">
-            <div class="fail-title">
+            <div class="ending-title">
                 <p>Oops! The Ocean is polluted!</p>
                 <p>Try again to save it.</p>
             </div>
             <i class="fa-solid fa-face-sad-tear"></i>
-            <div class="fail-retry_btn">
+            <div class="ending-retry_btn">
                 <button class="retry" id="retry-btn">Retry</button>
             </div>
         </div>
 
-        <!-- <div class="ending success" id="success">
-
-        </div> -->
-
+        <!-- Success ending screen -->
+        <div class="ending success" id="success">
+            <div class="ending-title">
+                <p>Thanks for saving the ocean!</p>
+                <p>Keep up the great work.</p>
+            </div>
+            <i class="fa-solid fa-face-smile-wink"></i>
+            <div class="ending-retry_btn">
+                <button class="play-again" id="play-again-btn">Play again</button>
+            </div>
+        </div>
 
 
     </div>
 
-    <!-- My JS -->
+    <!-- How to Play / Instruction JS -->
+    <script src="../javascript/instruction.js"></script>
+    <!-- Game Play JS -->
     <script src="../javascript/script.js"></script>
 </body>
 </html>
