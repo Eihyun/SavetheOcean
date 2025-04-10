@@ -4,13 +4,6 @@ const bottle = '../images/Bottle.png';
 const can = '../images/Can.png';
 const paper = '../images/Paper.png';
 
-const itemMap = {
-    ArrowUp: banana,
-    ArrowLeft: bottle,
-    ArrowRight: paper,
-    ArrowDown: can
-};
-
 const itemList = []; // live queue of items
 
 const itemContainers = [
@@ -59,43 +52,84 @@ const heart2 = document.querySelector('#heart2');
 const heart3 = document.querySelector('#heart3');
 const gamePage = document.querySelector('#game-page');
 
+const itemMap = {
+    ArrowUp: banana,
+    ArrowLeft: bottle,
+    ArrowRight: paper,
+    ArrowDown: can
+};
+
+const octopus = document.getElementById('octopus');
 // Handle arrow key press
 function handleKey(event) {
+    // listen to the pressed arrow key
     const expectedItem = itemMap[event.key];
-    if (!expectedItem) return;
+    // console.log(octopus);
+    if (event.key === 'ArrowRight') {
+        octopus.style.transform = "rotate(90deg)";
+    } else if (event.key === 'ArrowDown') {
+        octopus.style.transform = "rotate(180deg)";
+    }else if (event.key === 'ArrowUp') {
+        
+        octopus.style.transform = "rotate(0deg)";
+    }else if (event.key === 'ArrowLeft') {
+        octopus.style.transform = "rotate(270deg)";
+    }
+    // return the value according to the pressed arrow key
+    if (!expectedItem) {
+        return;
+    } 
 
+    // set current item to be the bottom item(#item1) on the conveyor
     const currentItem = itemList[0];
+    // If the current item is equal to the pressed arrow key value
+    // pressed the right arrow key
     if (expectedItem === currentItem) {
+        // remove the first element(#item1) from the item list array
         itemList.shift();
+        // add a random element to the end of the item list array
         itemList.push(getRandomItem());
+        // display the updated item array 
         renderItems();
+        // add 1 score
         score++;
+        // display the updated score
         updateScore();
-    } else {
+    } else { // pressed the wrong arrow key
+        // lose 1 heart
         loseHeart();
     }
 }
 
+// display the updated score
 function updateScore() {
     displayScore.innerHTML = score;
 }
 
+// lose 1 heart when pressed the wrong arrow key 
 function loseHeart() {
+    // add 1 wrong count
     wrongCount++;
 
+    // lose 1st heart
     if (wrongCount === 1) {
+        // last heart turns gray
         heart3.src = '../images/Heart_x.png';
+        // background image changes
         gamePage.style.backgroundImage = 'url(../images/Game_bg_2.png)';
-    } else if (wrongCount === 2) {
+    } else if (wrongCount === 2) { // lose 2nd heart
+        // middle heart turns gray
         heart2.src = '../images/Heart_x.png';
+        // background image changes
         gamePage.style.backgroundImage = 'url(../images/Game_bg_3.png)';
-    } else if (wrongCount === 3) {
+    } else if (wrongCount === 3) { // lose 3rd heart
         fail();
     }
 }
 
 //////////
 const startBtn = document.querySelector('#start-btn');
+const startBtn2 = document.querySelector('#start-btn2');
 const displayTime = document.querySelector('#time');
 const displayScore = document.querySelector('#score');
 
@@ -127,12 +161,13 @@ function gameStart() {
         // When time ends, game ends
         if (time <= 0) {
             clearInterval(timeInterval);
-
             // If user fail to place 20 items under 60 seconds, they lose
             if (score > 20 && wrongCount < 3) {
                 success();
+                return;
             } else { // If user win, show successs ending
                 fail();
+                return;
             }
 
         }
@@ -140,6 +175,7 @@ function gameStart() {
 }
 
 startBtn?.addEventListener('click', gameStart);
+startBtn2?.addEventListener('click', gameStart);
 
 
 // Reset Game interface
@@ -164,22 +200,23 @@ const successPage = document.querySelector('#success');
 // Display Fail page
 function fail() {
     failPage.style.visibility = 'visible';
-    gamePage.style.opacity = '40%';
+    gamePage.style.opacity = '0%';
     reset();
+    // if time runs out
+    // else heart runs out
 }
 
 // Display Success page
 function success() {
     successPage.style.visibility = 'visible';
-    gamePage.style.opacity = '40%';
+    gamePage.style.opacity = '0%';
     reset();
 }
 
 //////////
 // Retry button goes back to 
 function goHome() {
-    gamePage.style.visibility = 'hidden';
-    gamePage.style.opacity = '100%';
+    location.reload();
 }
 
 function retry() {

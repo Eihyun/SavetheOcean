@@ -38,11 +38,11 @@ button {
     cursor: pointer;
 }
 
-body, .container, .start-page, .start-page_btns, .howTo-page, .game-page, .status-title, .hearts-container, .ending {
+body, .container, .start-page, .start-page_btns, .howTo-page, .arrows-container, .game-page, .bin, .status-title, .hearts-container, .ending {
     display: flex;
 }
 
-body, .container, .start-page, .start-page_btns, .ending {
+body, .container, .start-page, .start-page_btns, .arrows-container, .bin, .ending {
     justify-content: center;
     align-items: center;
 }
@@ -121,22 +121,22 @@ body, .container, .start-page, .start-page_btns, .ending {
     align-items: center;
 }
 
-.howTo-page_close {
-    width: 4rem;
-    height: 4rem;
-    margin: 2rem;
+.howTo-page_close-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 1rem;
     background-color: transparent;
     align-self: flex-end;
 }
 
-.howTo-page_close i {
-    font-size: 4rem;
+.howTo-page_close-icon i {
+    font-size: 3rem;
 }
 
 .howTo-page_text {
-    width: 25rem;
+    width: 30rem;
     text-align: center;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
 }
 
 .howTo-page_text p {
@@ -144,15 +144,37 @@ body, .container, .start-page, .start-page_btns, .ending {
 }
 
 .howTo-page_arrows {
-    width: 30rem;
+    width: 90%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: 
+    ". up ."
+    "left . right"
+    ". down .";
     gap: 1rem;
-    margin: 1rem 0 3rem;
+    margin: 1rem 0;
 }
 
-.howTo-page_arrows i {
-    grid-column: 1;
+.howTo-arrowUp {
+    grid-area: up;
+    flex-direction: column-reverse;
+}
+
+.howTo-arrowRight {
+    grid-area: right;
+}
+
+.howTo-arrowDown {
+    grid-area: down;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.howTo-arrowLeft {
+    grid-area: left;
+    flex-direction: row-reverse;
+}
+
+.arrows-container i {
     width: 4rem;
     height: 4rem;
     color: white;
@@ -163,7 +185,7 @@ body, .container, .start-page, .start-page_btns, .ending {
     margin: 0 auto;
 }
 
-.howTo-page_arrows img {
+.arrows-container img {
     max-width: 4rem;
     max-height: 4rem;
     grid-column: 2;
@@ -171,37 +193,48 @@ body, .container, .start-page, .start-page_btns, .ending {
     align-self: center;
 }
 
-.howTo-page_arrows div {
+.arrows-container div {
     grid-column: 3 / -1;
     font-family: "Poppins", sans-serif;
-    font-size: 1.2rem;
-    line-height: 3.5rem;
-    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 600;
 }
 
-.howTo-page_arrows > .fa-arrow-up {
+.fa-arrow-up {
     background-color: var(--Organic);
 }
 
-.howTo-page_arrows > .fa-arrow-right {
+.fa-arrow-right {
     background-color: var(--Paper);
 }
 
-.howTo-page_arrows > .fa-arrow-down {
+.fa-arrow-down {
     background-color: var(--Aluminium);
 }
 
-.howTo-page_arrows > .fa-arrow-left {
+.fa-arrow-left {
     background-color: var(--Plastic);
 }
 
-
 .howTo-page_warning {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.howTo-page_warning i {
+.howTo-page_warning img {
+    width: 1.5rem;
     color: #FC5959;
+}
+
+.howTo-page_start-btn {
+    width: 11rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    background-color: var(--Organic);
+    color: white;
 }
 
 /* Game Interface Page */
@@ -250,6 +283,38 @@ body, .container, .start-page, .start-page_btns, .ending {
     font-size: 3rem;
 }
 
+
+.arrows-demo {
+    grid-area: keys;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    top: 56rem;
+    left: 2rem;
+}
+
+.arrows-demo span {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.arrow-key {
+    background: #ccc;
+    border-radius: 6px;
+    box-shadow: -1px 1px 0 #999, -2px 2px 0 #999, -3px 3px 0 #999, -4px 4px 0 #999;
+    color: #fff;
+    display: inline-flex;
+    font-size: 30px;
+    font-weight: bold;
+    height: 35px;
+    margin: 2px;
+    transition: box-shadow .1s linear, transform .1s linear;
+    width: 35px;
+    justify-content: center;
+}
+
+
 .hearts-container {
     position: absolute;
     gap: 1.3rem;
@@ -262,21 +327,25 @@ body, .container, .start-page, .start-page_btns, .ending {
 }
 
 .conveyor {
-    width: 11rem;
-    height: 35rem;
+    width: 10rem;
+    height: 30rem;
     background-image: url(../images/Conveyor.png);
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
-    left: 37.5%;
+    left: 39%;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.conveyor span {
+    height: 35%;
+}
+
 .conveyor > span > img {
-    height: 70%;
+    height: 80%;
 }
 
 .octopus-container {
@@ -285,6 +354,8 @@ body, .container, .start-page, .start-page_btns, .ending {
     left: 20%;
     top: 40%;
     width: 27.75rem;
+    transform-origin: 50% 65%;
+    
 }
 
 .octopus-container img {
@@ -311,6 +382,12 @@ body, .container, .start-page, .start-page_btns, .ending {
     background: #000;
     height: 11.5rem;
     z-index: 0;
+    color: white;
+    flex-direction: column;
+}
+
+.bin i {
+    font-size: 2rem;
 }
 
 .organic-bin, .aluminium-bin {
@@ -323,26 +400,22 @@ body, .container, .start-page, .start-page_btns, .ending {
 
 .organic-bin {
     border: 32px solid var(--Organic);
-
     grid-area: a;
 }
 
 .plastic-bin {
     border: 32px solid var(--Plastic);
-
     grid-area: b;
 }
 
 .aluminium-bin {
     border: 32px solid var(--Aluminium);
-
     grid-area: d;
 }
+
 .paper-bin {
     border: 32px solid var(--Paper);
-
     grid-area: c;
-
 }
 
 

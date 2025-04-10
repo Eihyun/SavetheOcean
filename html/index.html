@@ -28,7 +28,7 @@
 
         <!-- How to Play -->
         <div class="howTo-page" id="howTo-page">
-            <button class="howTo-page_close" id="close-btn">
+            <button class="howTo-page_close-icon" id="close-btn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -37,26 +37,36 @@
                 <p>You have 60 seconds to complete the challenge!</p>
             </div>
 
-            <div class="howTo-page_arrows">
-                <i class="fa-solid fa-arrow-up"></i>
-                <img src="../images/Banana.png" alt="">
-                <div>Organic: Arrow Up Key</div>
-                <i class="fa-solid fa-arrow-right"></i>
-                <img src="../images/Paper.png" alt="">
-                <div>Paper: Arrow Right Key</div>
-                <i class="fa-solid fa-arrow-down"></i>
-                <img src="../images/Can.png" alt="">
-                <div>Aluminium: Arrow Down Key</div>
-                <i class="fa-solid fa-arrow-left"></i>
-                <img src="../images/bottle.png" alt="">
-                <div>Plastic: Arrow Left Key</div>
-            </div>
-
             <div class="howTo-page_warning">
                 <p>Lose 3 <img src="../images/Heart.png" class="heart" id="heart" alt="">, you lose the game!</p>
             </div>
-        </div>
 
+            <div class="howTo-page_arrows">
+                <div class="howTo-arrowUp arrows-container">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    <img src="../images/Banana.png" alt="">
+                    <div>Organic</div>
+                </div>
+                <div class="howTo-arrowRight arrows-container">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <img src="../images/Paper.png" alt="">
+                    <div>Paper</div>
+                </div>
+                <div class="howTo-arrowDown arrows-container">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    <img src="../images/Can.png" alt="">
+                    <div>Aluminium</div>
+                </div>
+                <div class="howTo-arrowLeft arrows-container">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <img src="../images/bottle.png" alt="">
+                    <div>Plastic</div>
+                </div>
+            </div>
+
+
+            <button class="howTo-page_start-btn" id="start-btn2">Start</button>
+        </div>
         <!-- Game Page -->
         <div class="game-page" id="game-page">
 
@@ -69,6 +79,13 @@
                 <div class="time-container" id="time-container">
                     <span class="status-title time-title">Time</span>
                     <span class="status" id="time"></span>
+                </div>
+                <div class="arrows-demo">
+                    <!-- <span>Use arrow keys to play</span> -->
+                    <div class="arrow-key up">&uarr;</div><br>
+                    <div class="arrow-key left">&larr;</div>
+                    <div class="arrow-key right">&darr;</div>
+                    <div class="arrow-key down">&rarr;</div>
                 </div>
                 <div class="hearts-container">
                     <img src="../images/Heart.png" class="heart" id="heart1" alt="">
@@ -85,16 +102,28 @@
             </div>
 
             <!-- Octopus -->
-            <div class="octopus-container">
+            <div class="octopus-container" id="octopus">
                     <img src="../images/Octopus.png" alt="">
             </div>
 
             <!-- Garbage bins -->
             <div class="bins-container">
-                <div class="bin organic-bin"></div>
-                <div class="bin paper-bin"></div>
-                <div class="bin aluminium-bin"></div>
-                <div class="bin plastic-bin"></div>
+                <div class="bin organic-bin">
+                    <span>Organic</span>
+                </div>
+                <div class="bin paper-bin">
+                    <!-- <i class="fa-solid fa-newspaper"></i> -->
+                    <span>Paper</span>
+                </div>
+                <div class="bin aluminium-bin">
+                    <span>Aluminium</span>
+
+                </div>
+                <div class="bin plastic-bin">
+                    <!-- <i class="fa-solid fa-bottle-water"></i> -->
+                    <span>Plastic</span>
+                </div>
+
             </div>
         </div>
 
@@ -107,6 +136,7 @@
             <i class="fa-solid fa-face-sad-tear"></i>
             <div class="ending-retry_btn">
                 <button class="retry" id="retry-btn">Retry</button>
+                
             </div>
         </div>
 
