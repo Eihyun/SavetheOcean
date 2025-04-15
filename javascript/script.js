@@ -83,8 +83,8 @@ function handleKey(event) {
     // set current item to be the bottom item(#item1) on the conveyor
     const currentItem = itemList[0];
 
-    const correctSound = new Audio('../audio/cartoon_wink_magic_sparkle-6896.mp3');
-    const wrongSound = new Audio('../audio/cartoon-splat-310479.mp3');
+    const correctSound = new Audio('../audio/sparkle.mp3');
+    const wrongSound = new Audio('../audio/splat.mp3');
 
     // If the current item is equal to the pressed arrow key value
     // pressed the right arrow key
@@ -142,7 +142,7 @@ const displayTime = document.querySelector('#time');
 const displayScore = document.querySelector('#score');
 
 // Time set for the game play
-let time = 20;
+let time = 60;
 
 // bgm starts
 const bgm = document.querySelector('#bgm');
@@ -199,7 +199,7 @@ startBtn2?.addEventListener('click', gameStart);
 function reset() {
     wrongCount = 0;
     score = 0;
-    time = 20;
+    time = 60;
     heart3.src = '../images/Heart.png';
     heart2.src = '../images/Heart.png';
     gamePage.style.backgroundImage = 'url(../images/Game_bg.png)';
@@ -214,8 +214,8 @@ const playAgainBtn = document.querySelector('#play-again-btn');
 const failPage = document.querySelector('#fail');
 const successPage = document.querySelector('#success');
 
-const failSound = new Audio('../audio/cartoon-fail-trumpet-278822.mp3');
-const successSound = new Audio('../audio/yay-6120.mp3');
+const failSound = new Audio('../audio/fail.mp3');
+const successSound = new Audio('../audio/yay.mp3');
 
 const failTitle = document.getElementById('fail-title');
 
