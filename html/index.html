@@ -9,9 +9,14 @@
 </head>
 <body>
     <div class="container">
+
+
         <!-- Start Page -->
         <div class="start-page">
             <div class="start-page_title">
+                <div class="audio-bg">
+                    <audio src="../audio//BG/soft-waves-on-the-beach-sound-190884.mp3" id="bgm"></audio>
+                </div>
                 <h1>Save the Ocean</h1>
             </div>
             <div class="start-page_btns">       
@@ -129,15 +134,17 @@
 
         <!-- Fail ending screen -->
         <div class="ending fail" id="fail">
-            <div class="ending-title">
-                <p>Oops! The Ocean is polluted!</p>
-                <p>Try again to save it.</p>
+            <div class="ending-title" id="fail-title">
             </div>
             <i class="fa-solid fa-face-sad-tear"></i>
             <div class="ending-retry_btn">
                 <button class="retry" id="retry-btn">Retry</button>
-                
             </div>
+            <p class="link">
+                <a href="https://recyclebc.ca/" target="_blank">
+                    Learn more about recycling
+                </a>
+            </p>
         </div>
 
         <!-- Success ending screen -->
@@ -150,6 +157,11 @@
             <div class="ending-retry_btn">
                 <button class="play-again" id="play-again-btn">Play again</button>
             </div>
+            <p class="link">
+                <a href="https://recyclebc.ca/" target="_blank">
+                    Learn more about recycling
+                </a>
+            </p>
         </div>
 
 

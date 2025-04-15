@@ -82,9 +82,15 @@ function handleKey(event) {
 
     // set current item to be the bottom item(#item1) on the conveyor
     const currentItem = itemList[0];
+
+    const correctSound = new Audio('../audio/cartoon_wink_magic_sparkle-6896.mp3');
+    const wrongSound = new Audio('../audio/cartoon-splat-310479.mp3');
+
     // If the current item is equal to the pressed arrow key value
     // pressed the right arrow key
     if (expectedItem === currentItem) {
+        correctSound.currentTime = 0; // rewind to start
+        correctSound.play();
         // remove the first element(#item1) from the item list array
         itemList.shift();
         // add a random element to the end of the item list array
@@ -96,6 +102,8 @@ function handleKey(event) {
         // display the updated score
         updateScore();
     } else { // pressed the wrong arrow key
+        wrongSound.currentTime = 0; // rewind to start
+        wrongSound.play();
         // lose 1 heart
         loseHeart();
     }
@@ -134,7 +142,15 @@ const displayTime = document.querySelector('#time');
 const displayScore = document.querySelector('#score');
 
 // Time set for the game play
-let time = 60;
+let time = 20;
+
+// bgm starts
+const bgm = document.querySelector('#bgm');
+const bgmAutoPlay = () => {
+    bgm.play().catch(err => {
+        console.warn('Autoplay blocked:', err.message);
+    });
+};
 
 // Game play start
 function gameStart() {
@@ -143,6 +159,9 @@ function gameStart() {
     // Display time starting 60 seconds
     displayTime.innerHTML = time;
     updateScore();
+
+    // Play background music
+    bgmAutoPlay();
 
     // Start the game
     initializeItems();
@@ -162,14 +181,13 @@ function gameStart() {
         if (time <= 0) {
             clearInterval(timeInterval);
             // If user fail to place 20 items under 60 seconds, they lose
-            if (score > 20 && wrongCount < 3) {
-                success();
-                return;
-            } else { // If user win, show successs ending
+            if (score < 20 || wrongCount > 2) {
                 fail();
                 return;
+            } else { // If user win, show successs ending
+                success();
+                return;
             }
-
         }
     }, 1000);
 }
@@ -177,12 +195,11 @@ function gameStart() {
 startBtn?.addEventListener('click', gameStart);
 startBtn2?.addEventListener('click', gameStart);
 
-
 // Reset Game interface
 function reset() {
     wrongCount = 0;
     score = 0;
-    time = 60;
+    time = 20;
     heart3.src = '../images/Heart.png';
     heart2.src = '../images/Heart.png';
     gamePage.style.backgroundImage = 'url(../images/Game_bg.png)';
@@ -197,13 +214,49 @@ const playAgainBtn = document.querySelector('#play-again-btn');
 const failPage = document.querySelector('#fail');
 const successPage = document.querySelector('#success');
 
+const failSound = new Audio('../audio/cartoon-fail-trumpet-278822.mp3');
+const successSound = new Audio('../audio/yay-6120.mp3');
+
+const failTitle = document.getElementById('fail-title');
+
 // Display Fail page
 function fail() {
     failPage.style.visibility = 'visible';
     gamePage.style.opacity = '0%';
-    reset();
-    // if time runs out
-    // else heart runs out
+
+    // fail sound effect
+    failSound.currentTime = 0; // rewind to start
+    failSound.play();
+
+    // Clear previous content
+    failTitle.innerHTML = '';
+
+    // First line (reason)
+    const reason = document.createElement("p");
+    if ( wrongCount > 2 ) {
+        reason.textContent = "You lost all your hearts!";
+        // Second line (instruction or encouragement)
+        const followUp = document.createElement("p");
+        followUp.textContent = "Try again to save the ocean!";
+
+        // Append both paragraphs
+        failTitle.appendChild(reason);
+        failTitle.appendChild(followUp);
+        reset();
+        return;
+
+    } else {
+        reason.textContent = "Time's up!";
+        // Second line (instruction or encouragement)
+        const followUp = document.createElement("p");
+        followUp.textContent = "Try again to save the ocean!";
+
+        // Append both paragraphs
+        failTitle.appendChild(reason);
+        failTitle.appendChild(followUp);
+        reset();
+        return;
+    }
 }
 
 // Display Success page
@@ -211,6 +264,8 @@ function success() {
     successPage.style.visibility = 'visible';
     gamePage.style.opacity = '0%';
     reset();
+    successSound.currentTime = 0; // rewind to start
+    successSound.play();
 }
 
 //////////
