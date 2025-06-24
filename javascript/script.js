@@ -286,3 +286,16 @@ function playAgain() {
 
 retryBtn?.addEventListener('click', retry);
 playAgainBtn?.addEventListener('click', playAgain);
+
+
+
+//////////
+// Arrow keys instruction
+const arrowKey = document.getElementById("arrow-key");
+const arrowDesc = document.getElementById("arrow-desc");
+
+const showDesc = () => arrowDesc.classList.remove("hidden");
+const hideDesc = () => arrowDesc.classList.add("hidden");
+
+arrowKey.addEventListener("mouseenter", showDesc);
+arrowKey.addEventListener("mouseleave", hideDesc);
