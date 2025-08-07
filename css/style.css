@@ -52,15 +52,41 @@ body, .container, .start-page, .start-page_btns, .arrows-container, .bin, .endin
     height: 63rem;
     max-height: 90vh;
     overflow: hidden;
-    background-color: white;
+    background-image: url(../images/Bg-1.png);
     flex-direction: column;
     position: relative;
+}
+
+/* Disable on mobile screen */
+@media screen and (max-width: 834px) {
+    .container {
+        width: 35rem;
+        height: 50rem;
+        max-height: 90vh;
+        overflow: hidden;
+        background-image: url(../images/Bg-1.png);
+        flex-direction: column;
+        position: relative;
+    }
+
+    .start-page::before {
+        content: 'Play on desktop for the best experience!';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        background: white;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 100000;
+    }
 }
 
 /* Start Page */
 .start-page {
     flex-direction: column;
-    gap: 30rem;
+    gap: 25rem;
 }
 
 .start-page_title {
@@ -81,6 +107,7 @@ body, .container, .start-page, .start-page_btns, .arrows-container, .bin, .endin
     height: 5.125rem;
     font-size: 2rem;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .startBtn {
@@ -459,7 +486,6 @@ body, .container, .start-page, .start-page_btns, .arrows-container, .bin, .endin
     margin-top: 2rem;
     font-size: 1.2rem;
 }
-
 
 .ending-title p {
     font-size: 2rem;

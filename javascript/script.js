@@ -171,6 +171,10 @@ function gameStart() {
 
     // When start button is clicked, time starts going right away
     const timeInterval = setInterval(function () {
+        if (gameOver) {
+            clearInterval(timeInterval);
+            return;
+        }
 
         // Time subtract by 1 every second
         time--;
@@ -183,10 +187,8 @@ function gameStart() {
             // If user fail to place 20 items under 60 seconds, they lose
             if (score < 20 || wrongCount > 2) {
                 fail();
-                return;
             } else { // If user win, show successs ending
                 success();
-                return;
             }
         }
     }, 1000);
@@ -219,8 +221,13 @@ const successSound = new Audio('../audio/yay.mp3');
 
 const failTitle = document.getElementById('fail-title');
 
+let gameOver = false;
+
 // Display Fail page
 function fail() {
+    if (gameOver) return; //already failed or won
+    gameOver = true;
+    
     failPage.style.visibility = 'visible';
     gamePage.style.opacity = '0%';
 
@@ -233,30 +240,25 @@ function fail() {
 
     // First line (reason)
     const reason = document.createElement("p");
+    const followUp = document.createElement("p");
+    followUp.textContent = "Try again to save the ocean!";
+
     if ( wrongCount > 2 ) {
         reason.textContent = "You lost all your hearts!";
-        // Second line (instruction or encouragement)
-        const followUp = document.createElement("p");
-        followUp.textContent = "Try again to save the ocean!";
-
         // Append both paragraphs
         failTitle.appendChild(reason);
         failTitle.appendChild(followUp);
         reset();
         return;
-
     } else {
         reason.textContent = "Time's up!";
-        // Second line (instruction or encouragement)
-        const followUp = document.createElement("p");
-        followUp.textContent = "Try again to save the ocean!";
-
         // Append both paragraphs
         failTitle.appendChild(reason);
         failTitle.appendChild(followUp);
         reset();
         return;
     }
+
 }
 
 // Display Success page
