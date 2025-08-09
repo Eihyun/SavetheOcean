@@ -142,7 +142,7 @@ const displayTime = document.querySelector('#time');
 const displayScore = document.querySelector('#score');
 
 // Time set for the game play
-let time = 60;
+let time = 20;
 
 // bgm starts
 const bgm = document.querySelector('#bgm');
@@ -201,7 +201,7 @@ startBtn2?.addEventListener('click', gameStart);
 function reset() {
     wrongCount = 0;
     score = 0;
-    time = 60;
+    time = 20;
     heart3.src = '../images/Heart.png';
     heart2.src = '../images/Heart.png';
     gamePage.style.backgroundImage = 'url(../images/Game_bg.png)';
